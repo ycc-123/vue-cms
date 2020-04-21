@@ -2,7 +2,7 @@
   <div>
   
 <mt-swipe :auto="4000">
-      <!-- 在组件中，使用v-for循环的话，一定要使用 key -->
+
       <mt-swipe-item><img src="../../images/banner1.jpg" alt=""></mt-swipe-item>
       <mt-swipe-item><img src="../../images/banner2.jpg" alt=""></mt-swipe-item>
       <mt-swipe-item><img src="../../images/banner3.jpg" alt=""></mt-swipe-item>

@@ -30,11 +30,7 @@
           <p>
             <mt-button type="primary" size="small">立即购买</mt-button>
             <mt-button type="danger" size="small" @click="addToShopCar">加入购物车</mt-button>
-            <!-- 分析： 如何实现加入购物车时候，拿到 选择的数量 -->
-            <!-- 1. 经过分析发现： 按钮属于 goodsinfo 页面， 数字 属于 numberbox 组件 -->
-            <!-- 2. 由于涉及到了父子组件的嵌套了，所以，无法直接在 goodsinfo 页面zhong 中获取到 选中的商品数量值-->
-            <!-- 3. 怎么解决这个问题：涉及到了 子组件向父组件传值了（事件调用机制） -->
-            <!-- 4. 事件调用的本质： 父向子传递方法，子调用这个方法， 同时把 数据当作参数 传递给这个方法 -->
+
           </p>
         </div>
       </div>
@@ -112,8 +108,6 @@ export default {
     addToShopCar() {
       // 添加到购物车
       this.ballFlag = !this.ballFlag;
-      // { id:商品的id, count: 要购买的数量, price: 商品的单价，selected: false  }
-      // 拼接出一个，要保存到 store 中 car 数组里的 商品信息对象
       var goodsinfo = {
         id: this.id,
         count: this.selectedCount,
@@ -128,13 +122,6 @@ export default {
     },
     enter(el, done) {
       el.offsetWidth;
-
-      // 小球动画优化思路：
-      // 1. 先分析导致 动画 不准确的 本质原因： 我们把 小球 最终 位移到的 位置，已经局限在了某一分辨率下的 滚动条未滚动的情况下；
-      // 2. 只要分辨率和 测试的时候不一样，或者 滚动条有一定的滚动距离之后， 问题就出现了；
-      // 3. 因此，我们经过分析，得到结论： 不能把 位置的 横纵坐标 直接写死了，而是应该 根据不同情况，动态计算这个坐标值；
-      // 4. 经过分析，得出解题思路： 先得到 徽标的 横纵 坐标，再得到 小球的 横纵坐标，然后 让 y 值 求差， x 值也求 差，得到 的结果，就是横纵坐标要位移的距离
-      // 5. 如何 获取 徽标和小球的 位置？？？   domObject.getBoundingClientRect()
 
       // 获取小球的 在页面中的位置
       const ballPosition = this.$refs.ball.getBoundingClientRect();

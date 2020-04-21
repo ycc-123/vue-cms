@@ -42,7 +42,6 @@ export default {
         .get("api/getcomments/" + this.id + "?pageindex=" + this.pageIndex)
         .then(result => {
           if (result.body.status === 0) {
-            // this.comments = result.body.message;
             // 每当获取新评论数据的时候，不要把老数据清空覆盖，而是应该以老数据，拼接上新数据
             this.comments = this.comments.concat(result.body.message);
           } else {
@@ -61,10 +60,7 @@ export default {
         return Toast("评论内容不能为空！");
       }
 
-      // 发表评论
-      // 参数1： 请求的URL地址
-      // 参数2： 提交给服务器的数据对象 { content: this.msg }
-      // 参数3： 定义提交时候，表单中数据的格式  { emulateJSON:true }
+
       this.$http
         .post("api/postcomment/" + this.$route.params.id, {
           content: this.msg.trim()

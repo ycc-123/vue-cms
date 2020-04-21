@@ -25,7 +25,7 @@ import comment from "../subcomponents/comment.vue";
 export default {
   data() {
     return {
-      id: this.$route.params.id, // 将 URL 地址中传递过来的 Id值，挂载到 data上，方便以后调用
+      id: this.$route.params.id, 
       newsinfo: {} // 新闻对象
     };
   },
